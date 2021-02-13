@@ -46,7 +46,7 @@ namespace GigHub.Controllers
         {
             var userId = User.Identity.GetUserId();
             var gigs = context.Gigs.
-                Where(a => a.ArtistId == userId && a.DateTime > DateTime.Now)
+                Where(a => a.ArtistId == userId && a.DateTime > DateTime.Now && !a.isCancelled)
                 .Include(a => a.Genre)
                 .ToList();
 
@@ -74,10 +74,12 @@ namespace GigHub.Controllers
 
             var gigVM = new GigViewModel()
             {
-                Genres = context.Genres.ToList()
+                Genres = context.Genres.ToList(),
+                Heading = "Add Gig"
+
             };
 
-            return View(gigVM);
+            return View("GigForm", gigVM);
 
 
 
@@ -88,12 +90,12 @@ namespace GigHub.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(GigViewModel gigVM)
         {
-            //if (!ModelState.IsValid)
+            if (!ModelState.IsValid)
 
-            //{
-            //    gigVM.Genres = context.Genres.ToList();
-            //    return View("Create", gigVM);
-            //}
+            {
+                gigVM.Genres = context.Genres.ToList();
+                return View("GigForm", gigVM);
+            }
 
             var gig = new Gig()
             {
@@ -109,5 +111,54 @@ namespace GigHub.Controllers
 
 
         }
+
+
+        [Authorize]
+        [HttpGet]
+
+        public ActionResult Edit(int gigId)
+        {
+            var userId = User.Identity.GetUserId();
+            var gig = context.Gigs.Single(g => g.Id == gigId && g.ArtistId == userId);
+            var gigViewModel = new GigViewModel()
+            {
+                Date = gig.DateTime.ToString("d MMM yyyy"),
+                Time = gig.DateTime.ToString("HH:mm"),
+                Venue = gig.Venue,
+                Id = gig.Id,
+                Genre = gig.GenreId,
+                Genres = context.Genres.ToList(),
+                Heading = "Edit Gig"
+            };
+
+            return View("GigForm", gigViewModel);
+
+
+
+        }
+
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Update(GigViewModel gigVM)
+        {
+            if (!ModelState.IsValid)
+
+            {
+                gigVM.Genres = context.Genres.ToList();
+                return View("GigForm", gigVM);
+            }
+            var userId = User.Identity.GetUserId();
+            var gig = context.Gigs.Single(g => g.Id == gigVM.Id && g.ArtistId == userId);
+            gig.DateTime = gigVM.GetDateTime();
+            gig.Venue = gigVM.Venue;
+            gig.GenreId = gigVM.Genre;
+            context.SaveChanges();
+            return RedirectToAction("Mine", "Gigs");
+
+
+
+        }
+
     }
 }
