@@ -1,16 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using GigHub.Models;
+using GigHub.ViewModels;
+using System;
+using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace GigHub.Controllers
 {
     public class HomeController : Controller
     {
+
+        ApplicationDbContext context;
+
+        public HomeController()
+        {
+            context = new ApplicationDbContext();
+        }
         public ActionResult Index()
         {
-            return View();
+            var upCommingGigs = context.Gigs
+                .Include(i => i.Artist)
+                .Include(i => i.Genre)
+                .Where(i => i.DateTime > DateTime.Now).ToList();
+
+            var ViewModel = new GigsViewModel()
+            {
+                upCommingGigs = upCommingGigs,
+                showAction = User.Identity.IsAuthenticated,
+                Heading = "UpComing Gigs"
+            };
+
+            return View("Gigs", ViewModel);
+
+
         }
 
         public ActionResult About()
@@ -27,4 +49,6 @@ namespace GigHub.Controllers
             return View();
         }
     }
+
+
 }

@@ -7,13 +7,13 @@ namespace GigHub.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class populateGenersTable : IMigrationMetadata
+    public sealed partial class addFollowingTable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(populateGenersTable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(addFollowingTable));
         
         string IMigrationMetadata.Id
         {
-            get { return "202102121858599_populateGenersTable"; }
+            get { return "202102131803053_addFollowingTable"; }
         }
         
         string IMigrationMetadata.Source

@@ -1,6 +1,8 @@
 ﻿using GigHub.Models;
 using GigHub.ViewModels;
 using Microsoft.AspNet.Identity;
+using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -19,14 +21,62 @@ namespace GigHub.Controllers
 
 
         }
+        [Authorize]
+        public ActionResult Attending()
+        {
+            var userId = User.Identity.GetUserId();
+            var gigs = context.Attandances.Where(a => a.AttendeeId == userId)
+                .Select(a => a.Gig)
+                .Include(g => g.Artist)
+                .Include(g => g.Genre)
+                .ToList();
 
+            var viewModel = new GigsViewModel()
+            {
+                showAction = User.Identity.IsAuthenticated,
+                upCommingGigs = gigs,
+                Heading = "Gigs I'm Attending"
+            };
+
+            return View("Gigs", viewModel);
+        }
+
+        [Authorize]
+        public ActionResult Mine()
+        {
+            var userId = User.Identity.GetUserId();
+            var gigs = context.Gigs.
+                Where(a => a.ArtistId == userId && a.DateTime > DateTime.Now)
+                .Include(a => a.Genre)
+                .ToList();
+
+
+
+
+            return View(gigs);
+        }
+
+
+        //[Authorize]
+        //public ActionResult Following()
+        //{
+        //    var userId = User.Identity.GetUserId();
+        //    var gigs = context.Followings.Where(a => a.FollowerId == userId).ToList();
+
+
+
+
+        //    return View("Gigs", viewModel);
+        //}
         [Authorize]
         public ActionResult Create()
         {
+
             var gigVM = new GigViewModel()
             {
-                Genres = context.Genre.ToList()
+                Genres = context.Genres.ToList()
             };
+
             return View(gigVM);
 
 
@@ -38,12 +88,12 @@ namespace GigHub.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(GigViewModel gigVM)
         {
-            if (!ModelState.IsValid)
+            //if (!ModelState.IsValid)
 
-            {
-                var gigViewModel = context.Genre.ToList();
-                return View("Create", gigViewModel);
-            }
+            //{
+            //    gigVM.Genres = context.Genres.ToList();
+            //    return View("Create", gigVM);
+            //}
 
             var gig = new Gig()
             {
@@ -52,9 +102,9 @@ namespace GigHub.Controllers
                 GenreId = gigVM.Genre,
                 DateTime = gigVM.GetDateTime()
             };
-            context.Gig.Add(gig);
+            context.Gigs.Add(gig);
             context.SaveChanges();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Mine", "Gigs");
 
 
 

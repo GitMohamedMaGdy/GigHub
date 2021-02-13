@@ -7,13 +7,13 @@ namespace GigHub.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class AlterTables : IMigrationMetadata
+    public sealed partial class addAttendances : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AlterTables));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(addAttendances));
         
         string IMigrationMetadata.Id
         {
-            get { return "202102121857435_AlterTables"; }
+            get { return "202102131707448_addAttendances"; }
         }
         
         string IMigrationMetadata.Source
