@@ -168,6 +168,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\GigsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -177,12 +178,45 @@
     <Compile Include="Migrations\202102121808189_IntialMigration.Designer.cs">
       <DependentUpon>202102121808189_IntialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202102121856044_CreateGigTABLE.cs" />
+    <Compile Include="Migrations\202102121856044_CreateGigTABLE.Designer.cs">
+      <DependentUpon>202102121856044_CreateGigTABLE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102121857435_AlterTables.cs" />
+    <Compile Include="Migrations\202102121857435_AlterTables.Designer.cs">
+      <DependentUpon>202102121857435_AlterTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102121858300_AlterTables2.cs" />
+    <Compile Include="Migrations\202102121858300_AlterTables2.Designer.cs">
+      <DependentUpon>202102121858300_AlterTables2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102121858599_populateGenersTable.cs" />
+    <Compile Include="Migrations\202102121858599_populateGenersTable.Designer.cs">
+      <DependentUpon>202102121858599_populateGenersTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102122003170_alterTableGigAddForeignKey.cs" />
+    <Compile Include="Migrations\202102122003170_alterTableGigAddForeignKey.Designer.cs">
+      <DependentUpon>202102122003170_alterTableGigAddForeignKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102122004406_alterTableGigAddForeignKey2.cs" />
+    <Compile Include="Migrations\202102122004406_alterTableGigAddForeignKey2.Designer.cs">
+      <DependentUpon>202102122004406_alterTableGigAddForeignKey2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102122009066_alterTableGigAddForeignKey3.cs" />
+    <Compile Include="Migrations\202102122009066_alterTableGigAddForeignKey3.Designer.cs">
+      <DependentUpon>202102122009066_alterTableGigAddForeignKey3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Genre.cs" />
+    <Compile Include="Models\Gig.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\FutureDate.cs" />
+    <Compile Include="ViewModels\GigViewModel.cs" />
+    <Compile Include="ViewModels\ValidTime.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -240,6 +274,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Gigs\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -260,6 +295,27 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202102121808189_IntialMigration.resx">
       <DependentUpon>202102121808189_IntialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102121856044_CreateGigTABLE.resx">
+      <DependentUpon>202102121856044_CreateGigTABLE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102121857435_AlterTables.resx">
+      <DependentUpon>202102121857435_AlterTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102121858300_AlterTables2.resx">
+      <DependentUpon>202102121858300_AlterTables2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102121858599_populateGenersTable.resx">
+      <DependentUpon>202102121858599_populateGenersTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102122003170_alterTableGigAddForeignKey.resx">
+      <DependentUpon>202102122003170_alterTableGigAddForeignKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102122004406_alterTableGigAddForeignKey2.resx">
+      <DependentUpon>202102122004406_alterTableGigAddForeignKey2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102122009066_alterTableGigAddForeignKey3.resx">
+      <DependentUpon>202102122009066_alterTableGigAddForeignKey3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
