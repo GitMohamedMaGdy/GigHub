@@ -149,10 +149,12 @@ namespace GigHub.Controllers
                 return View("GigForm", gigVM);
             }
             var userId = User.Identity.GetUserId();
-            var gig = context.Gigs.Single(g => g.Id == gigVM.Id && g.ArtistId == userId);
-            gig.DateTime = gigVM.GetDateTime();
-            gig.Venue = gigVM.Venue;
-            gig.GenreId = gigVM.Genre;
+            var gig = context.Gigs
+                .Include(g => g.Attendances.Select(a => a.Attendee))
+                .Single(g => g.Id == gigVM.Id && g.ArtistId == userId);
+
+            gig.Modify(gigVM.GetDateTime(), gigVM.Venue, gigVM.Genre);
+
             context.SaveChanges();
             return RedirectToAction("Mine", "Gigs");
 
