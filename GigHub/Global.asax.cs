@@ -9,6 +9,11 @@ namespace GigHub
     {
         protected void Application_Start()
         {
+
+
+
+            //..register mapper with the dependency container used by your application.
+
             GlobalConfiguration.Configure(WebApiConfig.Register);
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
