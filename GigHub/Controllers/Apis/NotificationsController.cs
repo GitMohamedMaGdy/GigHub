@@ -12,7 +12,6 @@ namespace GigHub.Controllers.Apis
     public class NotificationsController : ApiController
     {
         ApplicationDbContext _context;
-        AutoMapperProfile AutoMapperProfile;
         IMapper mapper;
         public NotificationsController()
         {
