@@ -1,0 +1,210 @@
+﻿body {
+    padding-top: 90px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+.voffest4 {
+    margin-top: 40px;
+}
+
+span.field-validation-error {
+    color: red;
+    font-weight: bold;
+}
+
+.popover {
+    box-shadow: none;
+}
+
+.navbar-inverse {
+    background-color: #ff4342;
+    border-color: #ff4342;
+
+    .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+        color: #fff;
+        background-color: rgba(205,40,39,0.55);
+    }
+
+    .navbar-nav > li > a {
+        color: #fff;
+    }
+
+    .navbar-brand {
+        color: #fff;
+    }
+
+    .notifications {
+        position: relative;
+
+        .badge {
+            position: absolute;
+            top: 8px;
+            right: -1px;
+            background: #a80a0a;
+        }
+    }
+
+    .navbar-nav > .dropdown > a.caret {
+        border-top-color: #fff;
+        border-bottom-color: #fff;
+    }
+}
+
+
+.dropdown-menu {
+    box-shadow: none;
+}
+
+.navbar-brand {
+    font-weight: 700;
+}
+
+body {
+    font-size: 17px;
+}
+
+
+.tooltip,
+.popover,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-family: Lato,"Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    font-size: 17px;
+    height: 44px;
+    border-radius: 9px;
+}
+
+.form-control:focus {
+    border-color: #2196f3;
+    box-shadow: none;
+    -webkit-box-shadow: none
+}
+
+.btn {
+    /*  font-size: 17px;
+    padding: 7px 20px;*/
+    border-radius: 9px;
+}
+
+hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* page level styles*/
+
+
+.gigs {
+    list-style: none;
+
+    > li {
+        position: relative;
+        margin-bottom: 30px;
+    }
+
+    > li .details {
+        position: absolute;
+        top: 0;
+        left: 70px;
+    }
+
+    > li .date {
+        background: red;
+        color: white;
+        text-align: center;
+        width: 60px;
+        border-radius: 8px;
+    }
+
+    > li .date .month {
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 2px 6px;
+    }
+
+    > li .date .day {
+        background: #f7f7f7;
+        color: #333;
+        font-size: 20px;
+        padding: 6px 12px;
+    }
+
+    > li .details .artist {
+        font-weight: bold;
+        display: block;
+    }
+
+    > li .details.genre {
+        font-size: 15px;
+    }
+
+    > li .actions {
+        font-size: 15px;
+        display: block;
+    }
+}
+
+
+.popover-notifications {
+    .popover-content {
+        padding: 0px;
+    }
+
+    ul.notifications {
+        list-style: none;
+        padding-left: 0px;
+
+        > li {
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        > li :last-child {
+            border-bottom: none;
+        }
+
+        .highlight {
+            font-weight: bold;
+        }
+    }
+}

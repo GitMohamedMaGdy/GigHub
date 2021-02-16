@@ -36,5 +36,10 @@ namespace GigHub.Models
             User = user;
             Notification = notification;
         }
+
+        internal void Read()
+        {
+            IsRead = true;
+        }
     }
 }

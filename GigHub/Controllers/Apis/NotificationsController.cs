@@ -36,5 +36,20 @@ namespace GigHub.Controllers.Apis
 
         }
 
+
+        [HttpPost]
+        public IHttpActionResult MarkAsRead()
+        {
+            var userId = User.Identity.GetUserId();
+
+            var notifications = _context.UserNotifications
+                .Where(us => us.UserId == userId && !us.IsRead)
+                .ToList();
+
+            notifications.ForEach(n => n.Read());
+            _context.SaveChanges();
+            return Ok();
+        }
+
     }
 }

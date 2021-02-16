@@ -128,10 +128,15 @@ hr {
 .gigs{
     list-style:none
 }
+ .genre{
+    font-size:14px;
+    display:block;
+    margin-bottom:4px;
+}
 
-.gigs > li{
-    position:relative;
-    margin-bottom:30px;
+.gigs > li {
+    position: relative;
+    margin-bottom: 30px;
 }
 .gigs > li .details{
     position:absolute;
@@ -185,4 +190,11 @@ hr {
 
 .popover-notifications ul.notifications .highlight {
     font-weight: bold;
+}
+
+#formControlSeacrh{
+    box-shadow:none;
+}
+#searchGigs {
+    width: 310px;
 }
