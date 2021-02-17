@@ -1,6 +1,10 @@
+using GigHub.Controllers;
+using GigHub.Core;
+using GigHub.Peristance;
 using System;
 
 using Unity;
+using Unity.Injection;
 
 namespace GigHub
 {
@@ -42,6 +46,8 @@ namespace GigHub
 
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
+            container.RegisterType<IUnitOfWork, UnitOfWork>();
+            container.RegisterType<AccountController>(new InjectionConstructor());
 
         }
     }
